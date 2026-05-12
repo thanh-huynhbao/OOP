@@ -2,41 +2,29 @@
 using namespace std;
 
 class Base{
-    private:
-    int b_private;
-    protected:
-    int b_protected;
     public:
-    int b_public;
-    Base() : b_private(1), b_protected(2), b_public(3) {}
+    virtual void print() {cout << "This is BASE::print" << endl;
+    }
 };
 
-class Derived: protected Base
-{
-    protected:
-        int d_protected;
-    public:
-        int d_public;
-        Derived() : d_protected(4), d_public(5) {}    
+class Derived_1 : public Base{
+    public: 
+    virtual void print(){cout << "This is DERIVED-1::print" << endl;}
 };
 
-class DerivedofDerived : public Derived
-{   
-    
-    public:
-    void print()
-        {
-            cout << b_protected << endl;//2
-            cout << b_public << endl;//3
-            cout << d_protected << endl;//4
-            cout << d_public << endl;
-        }
+class Derived_2 : public Base{
+    public: 
+    virtual void print(){cout << "This is DERIVED-2::print" << endl;}
 };
 
 int main(){
-    DerivedofDerived obj;
-    obj.b_public = 20; //error
-    obj.d_public = 30;
-    obj.print();
+    Derived_1 d1_obj;
+    Derived_2 d2_obj;
+
+    Base *p;
+    p = &d1_obj;
+    p->print();
+    p = &d2_obj;
+    p->print();
     return 0;
 }
