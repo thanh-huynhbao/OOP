@@ -37,3 +37,11 @@ void Matrix::print(){
         cout << endl;
     }
 }
+
+double& Matrix::operator() (const int& idxR, const int& idxC){
+    return A[idxR][idxC];
+}
+
+double Matrix::operator() (const int& idxR, const int& idxC) const{
+    return A[idxR][idxC];
+}

@@ -10,4 +10,6 @@ class Matrix{
     void allocate();
     void random();
     void print();
+    double& operator() (const int& idxR, const int& idxC);
+    double operator() (const int& idxR, const int& idxC) const;
 };
